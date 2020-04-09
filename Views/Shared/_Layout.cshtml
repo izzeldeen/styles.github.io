@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Styles Online", "HomePage", "Items", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+
+                    @if ((string)(Session["UserType"]) == "admain")
+                    {
+                        <li>@Html.ActionLink("HomePage", "HomePage", "Items")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Items")</li>
+                        @*<li>@Html.ActionLink("Search", "getmanyrows", "Items")</li>*@
+                        <li>@Html.ActionLink("Add New Products", "Create", "Items")</li>
+                        <li>@Html.ActionLink("Users", "Index", "UserInfoes")</li>
+                        <li>@Html.ActionLink("logout", "logout", "UserInfoes")</li>
+
+                        <li class="">
+
+                            <button class="" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:15px; margin-left:2px;">
+                                Department
+                                <span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+
+
+                                <li><a href="@Url.Action("man","Items")">man</a></li>
+                                <li><a href="@Url.Action("women","Items")">women</a></li>
+                                <li><a href="@Url.Action("boy","Items")">boys</a></li>
+                                <li><a href="@Url.Action("girl","Items")">girl</a></li>
+                                <li><a href="@Url.Action("baby","Items")">baby</a></li>
+
+                            </ul>
+
+                        </li>
+
+
+
+
+                    }
+                    else if ((string)(Session["UserType"]) == "user")
+                    {
+                        <li>@Html.ActionLink("HomePage", "HomePage", "Items")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Items")</li>
+                        @*<li>@Html.ActionLink("Search", "getmanyrows", "Items")</li>*@
+                        <li>@Html.ActionLink("logout", "logout", "UserInfoes")</li>
+
+                        <li class="">
+
+                            <button class="" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:15px; margin-left:2px;">
+                                Department
+                                <span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+
+
+                                <li><a href="@Url.Action("man","Items")">man</a></li>
+                                <li><a href="@Url.Action("women","Items")">women</a></li>
+                                <li><a href="@Url.Action("boy","Items")">boys</a></li>
+                                <li><a href="@Url.Action("girl","Items")">girl</a></li>
+                                <li><a href="@Url.Action("baby","Items")">baby</a></li>
+
+                            </ul>
+
+                        </li>
+
+                    }
+
+                    else
+                    {
+                        <li>@Html.ActionLink("HomePage", "HomePage", "Items")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Items")</li>
+                        @*<li>@Html.ActionLink("Search", "getmanyrows", "Items")</li>*@
+
+                        <li>@Html.ActionLink("login", "login", "UserInfoes")</li>
+
+
+                        <li class="">
+
+                            <button class="" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:15px; margin-left:2px;">
+                                Department
+                                <span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+
+
+                                <li><a href="@Url.Action("man","Items")">man</a></li>
+                                <li><a href="@Url.Action("women","Items")">women</a></li>
+                                <li><a href="@Url.Action("boy","Items")">boys</a></li>
+                                <li><a href="@Url.Action("girl","Items")">girl</a></li>
+                                <li><a href="@Url.Action("baby","Items")">baby</a></li>
+
+                            </ul>
+
+                        </li>
+
+
+                    }
+
+
+
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year IzzeldeenKalbouneh</p>
+            </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+@*<section>
+    <audio autoplay width="600" >
+        <source src="~/audio/file.mp4" type="audio/mp4" loop="1"  />
+        the borwser not support this audio
+
+
+    </audio>
+</section>*@

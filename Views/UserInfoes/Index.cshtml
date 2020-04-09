@@ -1,0 +1,81 @@
+﻿@model IEnumerable<style.Models.UserInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Data</h2>
+
+<p>
+    @if((string)(Session["UserType"])=="admain")
+
+    { 
+    <a href="@Url.Action("Create","UserInfoes")" class="btn btn-primary" >
+        <span class="glyphicon glyphicon-plus"></span>
+       Add New User
+
+    </a>
+
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model =>model.UserID)
+
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.UserAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(ModelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserType)
+        </td>
+        <td>
+            @if ((string)(Session["UserType"]) == "admain")
+            {
+                <a href="@Url.Action("Edit","UserInfoes")" class="btn btn-warning">Edit</a>
+
+                <a href="@Url.Action("Delete","UserInfoes")" class="btn btn-danger">Delete</a>
+
+
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<style.Models.Item>
+
+@{
+    ViewBag.Title = "HomePage";
+}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+
+   
+        <img src="https://i.ytimg.com/vi/IlJl7Z0SSBA/maxresdefault.jpg" width="1200" height="300" />
+
+
+        <div class="row" >
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-sm-6 col-md-4 col-lg-8"  >      
+       >
+                    <div class="thumbnail" style="border:none;">
+
+                        <div class="containers" style="margin-left:auto;margin-right:auto">
+                            <img src="@Url.Content(item.logo)" alt="..." width="700" height="500">
+
+
+                            <div class="overlay">
+                                <div class="text">
+                                    <h3>@item.ItemName</h3>
+                                    <h3>Code:@item.Code</h3>
+                                    <h3>Price: @item.ItemPrice</h3>
+                                    <h3>Department: @item.Department</h3>
+
+                                    <p>@item.ItemDescription</p>
+
+                                </div>
+                                <p>
+                                    <a href="@Url.Action("")" class="btn btn-primary" role="button">Add to Cart</a>
+
+
+                                    @Html.ActionLink("Details", "Details", new { id = item.Code }, new { @class = "btn btn-warning" }) |
+
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+            }
+        </div>
+
+    

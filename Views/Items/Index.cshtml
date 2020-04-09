@@ -1,0 +1,92 @@
+﻿@model IEnumerable<style.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Items Data </h2>
+
+
+<p>
+
+    <input id="search" name="search" type="text" placeholder="Search" class="form-control" style="margin-top:3px;" />
+
+    <input type="submit" class="btn btn-primary" value="Search" style="margin-top:3px;" />
+
+
+    
+    @if ((string)(Session["UserType"]) == "admain")
+
+    {
+        <a href=" @Url.Action("Create","Items")" class="btn btn-primary">
+
+            <span class="glyphicon glyphicon-plus"></span>
+            Add New Item
+
+
+        </a>
+
+    }
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.logo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                <img src="@Url.Content(item.logo)" width="50" height="50" />
+
+
+            </td>
+            <td>
+                @if ((string)(Session["UserType"]) == "admain")
+                {
+                    <a href="@Url.Action("Edit","Items")" class="btn btn-warning">Edit</a>
+                    
+                    <a href="@Url.Action("Delete","Items")" class="btn btn-danger">Delete</a>
+
+
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

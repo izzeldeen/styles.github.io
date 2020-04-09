@@ -1,0 +1,94 @@
+﻿@model style.Models.Item
+
+@{
+    ViewBag.Title = "Details";
+
+
+
+}
+
+<h2>Details</h2>
+
+<div style="float:left">
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal" style="float:left;">
+
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+
+
+
+
+
+
+
+
+
+    </dl>
+</div>
+
+
+<div>
+
+
+
+
+    <img src="@Url.Content(Model.logo)" width="500" height="400" style="float:left" />
+
+
+</div>
+
+<div style="clear:both;text-align:center" >
+
+
+
+    <dd>
+        <br />
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Code }, new { @class = "btn btn-warning" }) |
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+
+    </dd>
+
+</div>
+
